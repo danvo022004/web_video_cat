@@ -42,6 +42,17 @@ Xem thử bản đã đóng gói:
 npm run preview
 ```
 
+## Đưa website lên GitHub Pages
+
+Dự án đã có sẵn workflow tại `.github/workflows/deploy.yml`. Mỗi lần bạn đẩy code lên nhánh `main`, GitHub sẽ tự động build và cập nhật website. Bạn chỉ cần bật GitHub Pages một lần theo các bước sau:
+
+1. Đẩy code lên GitHub bằng lệnh `git push origin main`.
+2. Trên trang repo, vào Settings, chọn Pages.
+3. Ở mục Build and deployment, chọn Source là GitHub Actions.
+4. Vào tab Actions để theo dõi workflow chạy, thường mất khoảng một đến hai phút.
+
+Khi workflow hoàn tất, website sẽ có địa chỉ dạng `https://<tên-tài-khoản>.github.io/web_video_cat/`.
+
 ## Cấu trúc dự án
 
 ```
@@ -83,12 +94,12 @@ Mở file `src/data/videos.js` và thay danh sách video mẫu bằng video củ
   width: 1920,
   height: 1080,
   duration: 30,                       // thời lượng tính bằng giây
-  thumb: '/videos/thumbs/meo-01.jpg', // ảnh bìa hiển thị trong lưới
-  src: '/videos/meo-01.mp4',          // file video phát trong lightbox
+  thumb: `${import.meta.env.BASE_URL}videos/thumbs/meo-01.jpg`, // ảnh bìa hiển thị trong lưới
+  src: `${import.meta.env.BASE_URL}videos/meo-01.mp4`,          // file video phát trong lightbox
 }
 ```
 
-Bạn có thể đặt file video trong thư mục `public/videos` rồi trỏ đường dẫn như ví dụ trên. Các album sẽ tự động xuất hiện trong bộ lọc dựa trên trường `album`. Nếu video có yêu cầu ghi nguồn, bạn có thể thêm các trường tùy chọn `author`, `license`, `licenseUrl` và `sourceUrl`, thông tin này sẽ hiển thị bên dưới video trong lightbox.
+Bạn có thể đặt file video trong thư mục `public/videos` rồi trỏ đường dẫn như ví dụ trên. Việc dùng `import.meta.env.BASE_URL` giúp đường dẫn vẫn đúng khi website nằm trong thư mục con của GitHub Pages. Lưu ý GitHub giới hạn mỗi file tối đa 100 MB và nên giữ repo ở dung lượng nhỏ, nên với video dài bạn có thể dùng link từ nơi lưu trữ khác như các video mẫu hiện tại. Các album sẽ tự động xuất hiện trong bộ lọc dựa trên trường `album`. Nếu video có yêu cầu ghi nguồn, bạn có thể thêm các trường tùy chọn `author`, `license`, `licenseUrl` và `sourceUrl`, thông tin này sẽ hiển thị bên dưới video trong lightbox.
 
 Bạn cũng có thể dùng nút "Tải video lên" trên trang để xem nhanh video từ máy mà không cần sửa code.
 
