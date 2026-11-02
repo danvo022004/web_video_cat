@@ -1,20 +1,16 @@
 import { useCallback, useMemo, useState } from 'react'
-import { sampleVideos } from './data/videos.js'
-import { useUploadedVideos } from './hooks/useUploadedVideos.js'
+import { sampleVideos as allVideos } from './data/videos.js'
 import { normalizeText } from './utils/normalizeText.js'
 import AlbumFilter from './components/AlbumFilter.jsx'
 import Gallery from './components/Gallery.jsx'
 import Lightbox from './components/Lightbox.jsx'
-import UploadButton from './components/UploadButton.jsx'
+
+const albums = [...new Set(allVideos.map((video) => video.album))]
 
 export default function App() {
-  const { videos: uploadedVideos, addFiles } = useUploadedVideos()
   const [album, setAlbum] = useState('')
   const [query, setQuery] = useState('')
   const [openIndex, setOpenIndex] = useState(null)
-
-  const allVideos = useMemo(() => [...uploadedVideos, ...sampleVideos], [uploadedVideos])
-  const albums = useMemo(() => [...new Set(allVideos.map((video) => video.album))], [allVideos])
 
   const visibleVideos = useMemo(() => {
     const keyword = normalizeText(query.trim())
@@ -22,7 +18,7 @@ export default function App() {
       (video) =>
         (!album || video.album === album) && (!keyword || normalizeText(video.title).includes(keyword)),
     )
-  }, [allVideos, album, query])
+  }, [album, query])
 
   const closeLightbox = useCallback(() => setOpenIndex(null), [])
 
@@ -30,10 +26,24 @@ export default function App() {
     <div className="app">
       <header className="header">
         <div>
-          <h1>Thư viện video mèo</h1>
+          <h1 className="title">
+            <span className="title__word" style={{ '--word-index': 0 }}>
+              Thư
+            </span>{' '}
+            <span className="title__word" style={{ '--word-index': 1 }}>
+              viện
+            </span>{' '}
+            <span className="title__mark">
+              <span className="title__word" style={{ '--word-index': 2 }}>
+                video
+              </span>{' '}
+              <span className="title__word" style={{ '--word-index': 3 }}>
+                mèo
+              </span>
+            </span>
+          </h1>
           <p className="header__subtitle">Duyệt video mèo theo album, tìm theo tên và xem toàn màn hình.</p>
         </div>
-        <UploadButton onFiles={addFiles} />
       </header>
 
       <section className="toolbar" aria-label="Bộ lọc video">
@@ -49,7 +59,11 @@ export default function App() {
       </section>
 
       <p className="count" aria-live="polite">
-        Hiển thị {visibleVideos.length} trên {allVideos.length} video
+        Hiển thị{' '}
+        <strong key={visibleVideos.length} className="count__number">
+          {visibleVideos.length}
+        </strong>{' '}
+        trên {allVideos.length} video
       </p>
 
       <main>

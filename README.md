@@ -1,13 +1,12 @@
 # Thư viện video mèo với React
 
-Đây là một website hiển thị video mèo được xây dựng bằng React và Vite, nhân bản từ project thư viện ảnh web_image. Bạn có thể duyệt video theo album, tìm video theo tên, xem video toàn màn hình và tải thêm video từ máy của mình.
+Đây là một website hiển thị video mèo được xây dựng bằng React và Vite, nhân bản từ project thư viện ảnh web_image. Bạn có thể duyệt video theo album, tìm video theo tên và xem video toàn màn hình.
 
 ## Tính năng
 
 * Lưới video dạng masonry, tự điều chỉnh số cột theo độ rộng màn hình, mỗi video có ảnh bìa, biểu tượng phát và thời lượng.
 * Lọc video theo album và tìm kiếm theo tên, hỗ trợ tìm không phân biệt dấu tiếng Việt.
 * Xem video toàn màn hình (lightbox) có thanh điều khiển phát, chuyển video bằng phím mũi tên trái, mũi tên phải và đóng bằng Esc.
-* Tải video lên từ máy, video được lưu tạm trong trình duyệt và sẽ mất khi tải lại trang.
 * Ảnh bìa tải theo kiểu lazy loading và hiển thị thông báo khi một video không tải được.
 * Ghi rõ tác giả, giấy phép và đường dẫn nguồn của từng video mẫu.
 * Giao diện thân thiện với bàn phím và trình đọc màn hình.
@@ -70,15 +69,11 @@ web_video_cat
     │   ├── AlbumFilter.jsx        Các nút lọc theo album
     │   ├── Gallery.jsx            Lưới video
     │   ├── VideoCard.jsx          Một video trong lưới
-    │   ├── Lightbox.jsx           Xem video toàn màn hình
-    │   └── UploadButton.jsx       Nút tải video lên
+    │   └── Lightbox.jsx           Xem video toàn màn hình
     ├── data
     │   └── videos.js              Danh sách video mèo mẫu
-    ├── hooks
-    │   └── useUploadedVideos.js   Quản lý video tải lên từ máy
     └── utils
         ├── formatDuration.js      Đổi số giây thành dạng phút:giây
-        ├── loadVideoSize.js       Đọc kích thước và thời lượng thật của video
         └── normalizeText.js       Bỏ dấu tiếng Việt để tìm kiếm
 ```
 

@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { formatDuration } from '../utils/formatDuration.js'
 
-export default function VideoCard({ video, onOpen }) {
+export default function VideoCard({ video, index, onOpen }) {
   const [failed, setFailed] = useState(false)
 
   return (
-    <figure className="card">
+    <figure className="card" style={{ '--card-index': Math.min(index, 12) }}>
       <button
         type="button"
         className="card__button"
@@ -15,7 +15,7 @@ export default function VideoCard({ video, onOpen }) {
       >
         {failed ? (
           <span className="card__fallback">Không tải được video</span>
-        ) : video.thumb ? (
+        ) : (
           <img
             src={video.thumb}
             alt={video.title}
@@ -23,16 +23,6 @@ export default function VideoCard({ video, onOpen }) {
             height={video.height}
             loading="lazy"
             decoding="async"
-            onError={() => setFailed(true)}
-          />
-        ) : (
-          // Video tải từ máy không có ảnh bìa nên hiển thị khung hình đầu tiên.
-          <video
-            src={`${video.src}#t=0.1`}
-            preload="metadata"
-            muted
-            playsInline
-            aria-label={video.title}
             onError={() => setFailed(true)}
           />
         )}

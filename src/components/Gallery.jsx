@@ -8,7 +8,7 @@ export default function Gallery({ videos, onOpen }) {
   return (
     <div className="gallery">
       {videos.map((video, index) => (
-        <VideoCard key={video.id} video={video} onOpen={() => onOpen(index)} />
+        <VideoCard key={video.id} video={video} index={index} onOpen={() => onOpen(index)} />
       ))}
     </div>
   )
