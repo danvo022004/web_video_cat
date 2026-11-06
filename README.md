@@ -1,13 +1,13 @@
-# Thư viện video mèo với React
+# Thư viện video 6 múi với React
 
-Đây là một website hiển thị video mèo được xây dựng bằng React và Vite, nhân bản từ project thư viện ảnh web_image. Bạn có thể duyệt video theo album, tìm video theo tên và xem video toàn màn hình.
+Đây là một website hiển thị video các chàng trai thân hình 6 múi (thi thể hình, tập gym, thể hình cổ điển) được xây dựng bằng React và Vite, nhân bản từ project thư viện ảnh web_image. Bạn có thể duyệt video theo album, tìm video theo tên và xem video toàn màn hình.
 
 ## Tính năng
 
 * Lưới video dạng masonry, tự điều chỉnh số cột theo độ rộng màn hình, mỗi video có ảnh bìa, biểu tượng phát và thời lượng.
 * Lọc video theo album và tìm kiếm theo tên, hỗ trợ tìm không phân biệt dấu tiếng Việt.
 * Xem video toàn màn hình (lightbox) có thanh điều khiển phát, chuyển video bằng phím mũi tên trái, mũi tên phải và đóng bằng Esc.
-* Phần "Đố vui về loài mèo" ở cuối trang với 16 câu hỏi trắc nghiệm, có điểm số, giải thích sau mỗi câu và nút làm lại.
+* Phần "Đố vui về thể hình" ở cuối trang với 16 câu hỏi trắc nghiệm, có điểm số, giải thích sau mỗi câu và nút làm lại.
 * Ảnh bìa tải theo kiểu lazy loading và hiển thị thông báo khi một video không tải được.
 * Ghi rõ tác giả, giấy phép và đường dẫn nguồn của từng video mẫu.
 * Giao diện thân thiện với bàn phím và trình đọc màn hình.
@@ -71,9 +71,9 @@ web_video_cat
     │   ├── Gallery.jsx            Lưới video
     │   ├── VideoCard.jsx          Một video trong lưới
     │   ├── Lightbox.jsx           Xem video toàn màn hình
-    │   └── Quiz.jsx               Trò chơi đố vui về loài mèo
+    │   └── Quiz.jsx               Trò chơi đố vui về thể hình
     ├── data
-    │   ├── videos.js              Danh sách video mèo mẫu
+    │   ├── videos.js              Danh sách video 6 múi mẫu
     │   └── quiz.js                Bộ câu hỏi đố vui
     └── utils
         ├── formatDuration.js      Đổi số giây thành dạng phút:giây
@@ -86,14 +86,14 @@ Mở file `src/data/videos.js` và thay danh sách video mẫu bằng video củ
 
 ```js
 {
-  id: 'meo-01',
-  title: 'Mèo con đang chơi',
-  album: 'Mèo con',
+  id: 'fit-01',
+  title: 'Chàng trai tập kéo xà',
+  album: 'Tập gym',
   width: 1920,
   height: 1080,
   duration: 30,                       // thời lượng tính bằng giây
-  thumb: `${import.meta.env.BASE_URL}videos/thumbs/meo-01.jpg`, // ảnh bìa hiển thị trong lưới
-  src: `${import.meta.env.BASE_URL}videos/meo-01.mp4`,          // file video phát trong lightbox
+  thumb: `${import.meta.env.BASE_URL}videos/thumbs/fit-01.jpg`, // ảnh bìa hiển thị trong lưới
+  src: `${import.meta.env.BASE_URL}videos/fit-01.mp4`,          // file video phát trong lightbox
 }
 ```
 
@@ -108,11 +108,11 @@ Mở file `src/data/quiz.js` để thêm, sửa hoặc xóa câu hỏi. Mỗi c�
 ```js
 {
   id: 'cb-01',
-  topic: 'Đặc điểm cơ thể',
-  question: 'Một chú mèo trưởng thành có bao nhiêu ngón chân tất cả?',
-  options: ['16', '18', '20', '24'],
-  answer: 1,
-  explanation: 'Mèo có 18 ngón chân: 5 ngón ở mỗi chân trước và 4 ngón ở mỗi chân sau.',
+  topic: 'Cơ bụng 6 múi',
+  question: 'Những "múi" bụng mà mọi người hay nhắc đến thực chất là cơ nào?',
+  options: ['Cơ thẳng bụng', 'Cơ ngực lớn', 'Cơ liên sườn', 'Cơ tam đầu cánh tay'],
+  answer: 0,
+  explanation: 'Cơ thẳng bụng chạy dọc phía trước bụng, các đường gân ngang cắt ngang cơ này tạo nên hình dạng các múi.',
 }
 ```
 

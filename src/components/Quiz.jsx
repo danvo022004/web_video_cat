@@ -5,10 +5,10 @@ const LETTERS = ['A', 'B', 'C', 'D']
 
 function getResultMessage(score, total) {
   const ratio = score / total
-  if (ratio === 1) return 'Tuyệt vời! Bạn là một chuyên gia thực thụ về loài mèo.'
-  if (ratio >= 0.75) return 'Rất tốt! Bạn hiểu khá nhiều về loài mèo.'
+  if (ratio === 1) return 'Tuyệt vời! Bạn là một chuyên gia thực thụ về thể hình.'
+  if (ratio >= 0.75) return 'Rất tốt! Bạn hiểu khá nhiều về thể hình.'
   if (ratio >= 0.5) return 'Khá ổn! Hãy thử lại để cải thiện điểm số nhé.'
-  return 'Bạn đã có một khởi đầu tốt. Hãy thử lại để khám phá thêm về loài mèo nhé.'
+  return 'Bạn đã có một khởi đầu tốt. Hãy thử lại để khám phá thêm về thể hình nhé.'
 }
 
 export default function Quiz() {
@@ -61,9 +61,9 @@ export default function Quiz() {
       <div className="quiz__heading">
         <div>
           <h2 id="quiz-title" className="quiz__title">
-            Đố vui về loài mèo
+            Đố vui về thể hình
           </h2>
-          <p className="quiz__intro">Thử sức với {total} câu hỏi trắc nghiệm về các chú mèo.</p>
+          <p className="quiz__intro">Thử sức với {total} câu hỏi trắc nghiệm về thể hình và cơ bụng 6 múi.</p>
         </div>
         {!finished && (
           <p className="quiz__score" aria-live="polite">

@@ -39,14 +39,14 @@ export default function App() {
                 video
               </span>{' '}
               <span className="title__word" style={{ '--word-index': 3 }}>
-                mèo
+                6 múi
               </span>
             </span>
           </h1>
-          <p className="header__subtitle">Duyệt video mèo theo album, tìm theo tên và xem toàn màn hình.</p>
+          <p className="header__subtitle">Duyệt video các chàng trai 6 múi theo album, tìm theo tên và xem toàn màn hình.</p>
         </div>
         <a className="header__link" href="#quiz">
-          Đố vui về mèo
+          Đố vui về thể hình
         </a>
       </header>
 
