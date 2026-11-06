@@ -7,6 +7,7 @@
 * Lưới video dạng masonry, tự điều chỉnh số cột theo độ rộng màn hình, mỗi video có ảnh bìa, biểu tượng phát và thời lượng.
 * Lọc video theo album và tìm kiếm theo tên, hỗ trợ tìm không phân biệt dấu tiếng Việt.
 * Xem video toàn màn hình (lightbox) có thanh điều khiển phát, chuyển video bằng phím mũi tên trái, mũi tên phải và đóng bằng Esc.
+* Phần "Đố vui về loài mèo" ở cuối trang với 16 câu hỏi trắc nghiệm, có điểm số, giải thích sau mỗi câu và nút làm lại.
 * Ảnh bìa tải theo kiểu lazy loading và hiển thị thông báo khi một video không tải được.
 * Ghi rõ tác giả, giấy phép và đường dẫn nguồn của từng video mẫu.
 * Giao diện thân thiện với bàn phím và trình đọc màn hình.
@@ -69,9 +70,11 @@ web_video_cat
     │   ├── AlbumFilter.jsx        Các nút lọc theo album
     │   ├── Gallery.jsx            Lưới video
     │   ├── VideoCard.jsx          Một video trong lưới
-    │   └── Lightbox.jsx           Xem video toàn màn hình
+    │   ├── Lightbox.jsx           Xem video toàn màn hình
+    │   └── Quiz.jsx               Trò chơi đố vui về loài mèo
     ├── data
-    │   └── videos.js              Danh sách video mèo mẫu
+    │   ├── videos.js              Danh sách video mèo mẫu
+    │   └── quiz.js                Bộ câu hỏi đố vui
     └── utils
         ├── formatDuration.js      Đổi số giây thành dạng phút:giây
         └── normalizeText.js       Bỏ dấu tiếng Việt để tìm kiếm
@@ -97,6 +100,23 @@ Mở file `src/data/videos.js` và thay danh sách video mẫu bằng video củ
 Bạn có thể đặt file video trong thư mục `public/videos` rồi trỏ đường dẫn như ví dụ trên. Việc dùng `import.meta.env.BASE_URL` giúp đường dẫn vẫn đúng khi website nằm trong thư mục con của GitHub Pages. Lưu ý GitHub giới hạn mỗi file tối đa 100 MB và nên giữ repo ở dung lượng nhỏ, nên với video dài bạn có thể dùng link từ nơi lưu trữ khác như các video mẫu hiện tại. Các album sẽ tự động xuất hiện trong bộ lọc dựa trên trường `album`. Nếu video có yêu cầu ghi nguồn, bạn có thể thêm các trường tùy chọn `author`, `license`, `licenseUrl` và `sourceUrl`, thông tin này sẽ hiển thị bên dưới video trong lightbox.
 
 Bạn cũng có thể dùng nút "Tải video lên" trên trang để xem nhanh video từ máy mà không cần sửa code.
+
+## Chỉnh sửa câu hỏi đố vui
+
+Mở file `src/data/quiz.js` để thêm, sửa hoặc xóa câu hỏi. Mỗi câu hỏi có dạng sau, trong đó `answer` là vị trí của đáp án đúng trong `options`, tính từ 0:
+
+```js
+{
+  id: 'cb-01',
+  topic: 'Đặc điểm cơ thể',
+  question: 'Một chú mèo trưởng thành có bao nhiêu ngón chân tất cả?',
+  options: ['16', '18', '20', '24'],
+  answer: 1,
+  explanation: 'Mèo có 18 ngón chân: 5 ngón ở mỗi chân trước và 4 ngón ở mỗi chân sau.',
+}
+```
+
+Số câu hỏi và điểm tối đa sẽ tự cập nhật theo số phần tử trong danh sách.
 
 ## Nguồn video mẫu
 

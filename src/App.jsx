@@ -4,6 +4,7 @@ import { normalizeText } from './utils/normalizeText.js'
 import AlbumFilter from './components/AlbumFilter.jsx'
 import Gallery from './components/Gallery.jsx'
 import Lightbox from './components/Lightbox.jsx'
+import Quiz from './components/Quiz.jsx'
 
 const albums = [...new Set(allVideos.map((video) => video.album))]
 
@@ -44,6 +45,9 @@ export default function App() {
           </h1>
           <p className="header__subtitle">Duyệt video mèo theo album, tìm theo tên và xem toàn màn hình.</p>
         </div>
+        <a className="header__link" href="#quiz">
+          Đố vui về mèo
+        </a>
       </header>
 
       <section className="toolbar" aria-label="Bộ lọc video">
@@ -69,6 +73,8 @@ export default function App() {
       <main>
         <Gallery videos={visibleVideos} onOpen={setOpenIndex} />
       </main>
+
+      <Quiz />
 
       <footer className="footer">
         Video mẫu được lấy từ{' '}
